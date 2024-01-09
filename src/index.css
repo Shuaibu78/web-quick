@@ -1,0 +1,56 @@
+iframe#webpack-dev-server-client-overlay{display:none!important}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  -ms-overflow-style: none;
+  scrollbar-width: 0.3125rem;
+
+  ::-webkit-scrollbar {
+    background-color: #f6f8fb;
+    width: 0.3125rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #8196b3;
+  }
+}
+
+body,
+textarea,
+select,
+input {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: "#ECEFF4";
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+textarea::placeholder {
+  color: #8196b3;
+  opacity: 0.7;
+}
+
+.modal {
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  top: 20%;
+  left: 10%;
+  width: 80%;
+  height: 70%;
+  border: 1px solid black;
+}
+
+.modal2 {
+  position: fixed;
+  z-index: 10000;
+}
