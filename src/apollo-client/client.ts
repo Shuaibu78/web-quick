@@ -7,13 +7,12 @@ import { isDesktop } from "../utils/helper.utils";
 export const location = globalThis.location;
 export const isDev = [`localhost:${process.env.REACT_APP_LOCAL_PORT}`].includes(location?.host);
 
-export const apiUri =
-  isDev || isDesktop()
-    ? `${process.env.REACT_APP_LOCAL_GRAPHQL_API}/graphql`
-    : `${address}/graphql`;
+export const apiUri = isDev
+  ? `${process.env.REACT_APP_LOCAL_GRAPHQL_API}/graphql`
+  : `${address}/graphql`;
 
 export const httpLink = createHttpLink({
-  uri: apiUri,
+  uri: isDesktop() ? apiUri : `${process.env.REACT_APP_LOCAL_GRAPHQL_API}/graphql`,
 });
 
 const authLink = setContext((_, { headers }) => {

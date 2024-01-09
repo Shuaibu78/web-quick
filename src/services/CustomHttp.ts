@@ -11,6 +11,4 @@ export function getCurrentHost() {
   return url.host;
 }
 
-export const address = isDesktop()
-  ? `http://${getCurrentHost()}`
-  : process.env.REACT_APP_LOCAL_GRAPHQL_API;
+export const address = `http://${getCurrentHost()}`;
