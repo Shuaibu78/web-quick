@@ -409,7 +409,7 @@ const Checkout: FunctionComponent<CheckoutProps> = ({
         onCredit: !!customerSelected?.customerName,
         discount: enableSurplus ? -saleItemsDiscount : saleItemsDiscount,
         comment,
-        paymentMethod: paymentMethod || "Cash",
+        paymentMethod: getMultiplePaymentMethod()[0].paymentMethod || "Cash",
         dueDate,
         createdAt: backDate,
         totalAmount: totalSaleAmount,
