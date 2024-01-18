@@ -56,7 +56,7 @@ const LockAccount: FunctionComponent<LockAccountProps> = ({ closePreLockModal, s
   const [getUserPinData] = useLazyQuery<{
     canSetUserPin: boolean;
   }>(CAN_USER_SET_PIN, {
-    fetchPolicy: "cache-and-network",
+    fetchPolicy: "network-only",
     onCompleted(data) {
       setCanChangePin(data?.canSetUserPin);
     },

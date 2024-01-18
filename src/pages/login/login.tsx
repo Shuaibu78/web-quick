@@ -23,6 +23,7 @@ import { getFCMToken } from "../../utils/firebase.utils";
 import { Colors } from "../../GlobalStyles/theme";
 import { setSession } from "../../app/slices/session";
 import { setShowSelectShop } from "../../app/slices/accountLock";
+import { isDesktop } from "../../utils/helper.utils";
 
 const Login: FunctionComponent = () => {
   // const [keepMeLoggedIn, setKeepMeLoggedIn] = useState(false);
@@ -71,7 +72,9 @@ const Login: FunctionComponent = () => {
           setItem("currentShop", shop);
         }
 
-        socketClient.emit(SYNC_START, { shopId: shops[0]?.shopId });
+        if (isDesktop()) {
+          socketClient.emit(SYNC_START, { shopId: shops[0]?.shopId });
+        }
       } else {
         const { token, userId } = data?.data?.login;
         // setItem("session", { token, userId });

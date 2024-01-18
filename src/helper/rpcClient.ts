@@ -1,10 +1,10 @@
 import { JSONRPCClient } from "json-rpc-2.0";
-import { getCurrentHost } from "../services/CustomHttp";
+import { getApiUrl } from "../services/CustomHttp";
 
 // JSONRPCClient needs to know how to send a JSON-RPC request.
 // Tell it by passing a function to its constructor. The function must take a JSON-RPC request and send it.
 export const rpcClient: JSONRPCClient = new JSONRPCClient((jsonRPCRequest: any) =>
-  fetch(`${getCurrentHost()}/json-rpc`, {
+  fetch(getApiUrl("json-rpc"), {
     method: "POST",
     headers: {
       "content-type": "application/json",

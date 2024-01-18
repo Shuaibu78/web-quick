@@ -10,7 +10,7 @@ const clientSocketClass = (client: any = null) => {
     client.disconnect();
   }
 
-  client = socketIO.connect(process.env.REACT_APP_LOCAL_GRAPHQL_API!, {
+  client = socketIO.connect(process.env.REACT_APP_LOCAL_SERVER_API!, {
     query: {
       token: token,
     },

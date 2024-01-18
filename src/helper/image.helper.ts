@@ -14,7 +14,7 @@ interface IUpload {
 const queryWithFormData = async (formData: FormData, token: string, queryUrl: string) => {
   return await axios({
     method: "post",
-    url: `${process.env.REACT_APP_LOCAL_GRAPHQL_API}/${queryUrl}`,
+    url: `${process.env.REACT_APP_LOCAL_SERVER_API}/${queryUrl}`,
     data: formData,
     headers: {
       Authorization: "Bearer " + token,

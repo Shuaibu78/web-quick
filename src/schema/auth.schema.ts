@@ -168,10 +168,8 @@ export const GET_ALL_USER = gql`
 export const CREATE_USER_PIN = gql`
   mutation CreateUserPin($pin: String!) {
     createUserPin(pin: $pin) {
-      userCredentialId
       userId
       pin
-      token
       createdAt
       updatedAt
     }

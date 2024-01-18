@@ -107,6 +107,7 @@ export const getDefaultDate = (initialDate: string) => {
 };
 
 export const isDesktop = () => {
+  // const isDev = process.env.NODE_ENV === "development";
   const platform = `${process.env.REACT_APP_PLATFORM}`;
   return platform?.toLowerCase() === "desktop";
 };

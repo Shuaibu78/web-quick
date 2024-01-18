@@ -256,7 +256,7 @@ const Sidebar: FunctionComponent<ISidebar> = ({ startSync }) => {
   const [getUserPinData] = useLazyQuery<{
     canSetUserPin: boolean;
   }>(CAN_USER_SET_PIN, {
-    fetchPolicy: "cache-and-network",
+    fetchPolicy: "network-only",
     onCompleted(data) {
       setAbleToSetPin(data?.canSetUserPin);
     },
@@ -279,11 +279,12 @@ const Sidebar: FunctionComponent<ISidebar> = ({ startSync }) => {
   };
 
   const handleShiftEnd = () => {
+    getUserPinData();
     if (ableToSetPin) {
-      setShowWarn(true);
-    } else {
       dispatch(showLockModal());
       dispatch(lock({ lock: true }));
+    } else {
+      setShowWarn(true);
     }
   };
 
@@ -297,7 +298,7 @@ const Sidebar: FunctionComponent<ISidebar> = ({ startSync }) => {
       }
 
       if (
-        ableToSetPin ||
+        !ableToSetPin ||
         (usersWithPin && usersWithPin?.getAuthenticatedUsersWithPin?.length <= 1)
       ) {
         dispatch(setUserInfo({}));
@@ -642,7 +643,7 @@ const Sidebar: FunctionComponent<ISidebar> = ({ startSync }) => {
           setShowLogoutModal={setShowLogoutModal}
         />
       )}
-      {showWarn && ableToSetPin ? (
+      {showWarn && !ableToSetPin ? (
         <LockAccount closePreLockModal={closePreLockModal} setShowWarn={setShowWarn} />
       ) : null}
       {confirmSignout && (
